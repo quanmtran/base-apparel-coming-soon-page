@@ -174,7 +174,7 @@ body {
 	body {
 		display: grid;
 		grid-template-columns: 1.5fr 1fr;
-		grid-template-rows: 50px 1fr auto;
+		grid-template-rows: 100px 1fr auto;
 		grid-template-areas:
 			'logo image'
 			'content-area image'
@@ -183,6 +183,11 @@ body {
 
 	.logo-area {
 		grid-area: logo;
+		height: auto;
+	}
+
+	.logo-area .logo-container .logo {
+		height: 30%;
 	}
 
 	.image-area {
