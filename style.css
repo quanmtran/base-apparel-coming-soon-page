@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap');
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+:root {
+	--desaturated-red: hsl(0, 36%, 70%);
+	--soft-red: hsl(0, 93%, 68%);
+	--dark-grayish-red: hsl(0, 6%, 24%);
+	--content-max-width: 500px;
+	--content-padding: 50px;
+	--form-input-padding: 20px;
+	--submit-button-width: 80px;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Josefin Sans', sans-serif;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	background-image: url('./images/bg-pattern-desktop.svg');
+	background-repeat: no-repeat;
+}
+
+.logo-area {
+	height: 50px;
+	padding: 0 var(--content-padding);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.logo-area .logo-container {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	max-width: var(--content-max-width);
+}
+
+.logo-area .logo-container .logo {
+	position: absolute;
+	height: 50%;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.image-area {
+	height: 300px;
+	background-image: url('./images/hero-mobile.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+
+.content-area {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-grow: 1;
+	padding: var(--content-padding);
+}
+
+.content-area .content-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 30px;
+	text-align: center;
+	max-width: var(--content-max-width);
+	color: var(--desaturated-red);
+}
+
+.content-area .content-container .content-heading {
+	font-size: 3rem;
+	text-transform: uppercase;
+	letter-spacing: 0.3em;
+}
+
+.content-area .content-container .content-heading .first-line {
+	font-weight: 300;
+}
+
+.content-area .content-container .content-heading .second-line {
+	color: var(--dark-grayish-red);
+	font-weight: 600;
+}
+
+.content-area .content-container .content-message {
+	line-height: 1.7em;
+	font-weight: 400;
+}
+
+.content-area .content-container .form {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 10px;
+}
+
+.content-area .content-container .form .input-container {
+	width: 100%;
+	position: relative;
+}
+
+#email-input {
+	font-family: inherit;
+	font-weight: 400;
+	height: 4em;
+	width: 100%;
+	padding: 0 var(--form-input-padding);
+	border-radius: 30px;
+	border: 1px solid var(--desaturated-red);
+	outline: none;
+}
+
+#email-input::placeholder {
+	color: var(--desaturated-red);
+}
+
+#submit-btn {
+	background: url('./images/icon-arrow.svg'),
+		linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+	background-repeat: no-repeat;
+	background-position: center;
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 4em;
+	width: var(--submit-button-width);
+	border: none;
+	border-radius: 30px;
+	box-shadow: 0 1em 1em var(--desaturated-red);
+}
+
+#submit-btn:hover {
+	cursor: pointer;
+	background: url('./images/icon-arrow.svg'),
+		linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 74%, 74%));
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.content-area .content-container .form .error-message {
+	padding: 0 var(--form-input-padding);
+	color: var(--soft-red);
+	visibility: hidden;
+}
+
+#error-sign {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: calc(var(--submit-button-width) + 5px);
+	visibility: hidden;
+}
+
+.form.error #email-input {
+	border: 2px solid var(--soft-red);
+}
+
+.content-area .content-container .form.error .error-message,
+.content-area .content-container .form.error #error-sign {
+	visibility: visible;
+}
+
+@media (min-width: 376px) {
+	body {
+		display: grid;
+		grid-template-columns: 1.5fr 1fr;
+		grid-template-rows: 50px 1fr auto;
+		grid-template-areas:
+			'logo image'
+			'content-area image'
+			'footer image';
+	}
+
+	.logo-area {
+		grid-area: logo;
+	}
+
+	.image-area {
+		grid-area: image;
+		height: auto;
+		background-image: url('./images/hero-desktop.jpg');
+		background-position: center;
+		background-size: cover;
+	}
+
+	.content-area {
+		grid-area: content-area;
+	}
+
+	.content-area .content-container {
+		text-align: left;
+	}
+
+	footer {
+		grid-area: footer;
+	}
+}
